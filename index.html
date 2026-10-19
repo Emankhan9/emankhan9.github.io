@@ -27,7 +27,7 @@ h1{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:clamp(
 h1 em{font-style:italic;color:var(--gold)}
 .lead{max-width:600px;color:var(--muted);font-size:1.1rem}
 .cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
-.btn{padding:12px 26px;border:1px solid var(--ink);font-size:.9rem;font-weight:500;letter-spacing:.03em;transition:.2s}
+.btn{padding:12px 26px;border:1px solid var(--ink);font-size:.9rem;font-weight:500;letter-spacing:.03em;transition:.2s;display:inline-block;background:none;color:var(--ink);font-family:inherit;cursor:pointer}
 .btn.fill{background:var(--ink);color:var(--bg)}
 .btn:hover{background:var(--gold);border-color:var(--gold);color:#fff}
 .stats{display:flex;gap:48px;margin-top:54px;flex-wrap:wrap}
@@ -40,14 +40,17 @@ h2{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:2.1rem
 .filters button{background:none;border:0;border-bottom:2px solid transparent;padding:10px 16px;font:inherit;font-size:.9rem;color:var(--muted);cursor:pointer;margin-bottom:-1px}
 .filters button.on{color:var(--ink);border-color:var(--gold)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
-.card{background:var(--surface);border:1px solid var(--line);padding:28px;display:flex;flex-direction:column;gap:10px;transition:.25s}
+.card{background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;transition:.25s;cursor:pointer;overflow:hidden}
 .card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.thumb{height:170px;background:linear-gradient(135deg,var(--ink),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Playfair Display',Georgia,serif;font-size:2.4rem;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+.body{padding:22px 26px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
 .kind{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600}
 .card h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:1.3rem;margin:0}
 .card p{margin:0;color:var(--muted);font-size:.93rem}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
 .tags span{font-size:.72rem;padding:3px 10px;border:1px solid var(--line);color:var(--muted)}
-.card .go{margin-top:auto;padding-top:10px;font-size:.88rem;font-weight:500;color:var(--gold)}
+.go{margin-top:auto;padding-top:8px;font-size:.88rem;font-weight:500;color:var(--gold)}
 .sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
 .sk div{background:var(--surface);border:1px solid var(--line);padding:26px}
 .sk h4{margin:0 0 14px;font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:1.15rem}
@@ -61,6 +64,15 @@ h2{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:2.1rem
 .contact .sub{margin:0 auto 28px}
 .contact .cta{justify-content:center}
 footer{padding:30px 0;text-align:center;font-size:.82rem;color:var(--muted)}
+.modal{position:fixed;inset:0;background:rgba(10,14,25,.72);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 16px;z-index:20}
+.modal.open{display:flex}
+.panel{background:var(--surface);max-width:820px;width:100%;position:relative;padding:34px;border:1px solid var(--line)}
+.x{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.8rem;color:var(--muted);cursor:pointer}
+.panel h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:1.8rem;margin:6px 0 10px}
+.panel p{color:var(--muted)}
+.shots{display:grid;gap:14px;margin:20px 0}
+.shots img{width:100%;border:1px solid var(--line);display:block}
+.panel .cta{margin-top:18px}
 </style>
 </head>
 <body>
@@ -86,22 +98,9 @@ footer{padding:30px 0;text-align:center;font-size:.82rem;color:var(--muted)}
 
 <section id="projects">
   <div class="eyebrow">Selected work</div><h2>Projects</h2>
-  <p class="sub">Data analysis and web development, side by side.</p>
+  <p class="sub">Click any project to see screenshots, details and links.</p>
   <div class="filters" id="filters"><button class="on" data-f="all">All</button><button data-f="sql">SQL</button><button data-f="excel">Excel</button><button data-f="wp">WordPress</button><button data-f="web">Web Development</button><button data-f="cpp">C++</button></div>
-  <div class="grid" id="grid">
-    <div class="card" data-c="sql"><div class="kind">SQL · Analytics</div><h3>HR Employee Attrition</h3><p>Normalized a 4-table schema and answered 20 business questions, progressing from JOINs to CTEs, window functions and stored procedures.</p><div class="tags"><span>MySQL</span><span>CTEs</span><span>Window functions</span></div><a class="go" href="#">View on GitHub →</a></div>
-    <div class="card" data-c="sql"><div class="kind">SQL · Analytics</div><h3>Walmart Sales Analysis</h3><p>29 queries across three difficulty levels, including multi-layer CTEs, RANK, LAG, NTILE, a stored procedure and a view.</p><div class="tags"><span>MySQL</span><span>Stored procedure</span><span>Views</span></div><a class="go" href="#">View on GitHub →</a></div>
-    <div class="card" data-c="sql"><div class="kind">SQL · Analytics</div><h3>Pizza Sales Analysis</h3><p>Designed a 4-table schema from scratch and wrote 25 queries on top sellers, revenue trends and peak hours.</p><div class="tags"><span>MySQL</span><span>Schema design</span></div><a class="go" href="#">View on GitHub →</a></div>
-    <div class="card" data-c="sql"><div class="kind">SQL · Analytics</div><h3>E-Commerce Customer Behavior</h3><p>17,049-row dataset split into customers and orders tables, analysed with ranking, running totals and LAG.</p><div class="tags"><span>MySQL</span><span>Kaggle</span></div><a class="go" href="#">View on GitHub →</a></div>
-    <div class="card" data-c="sql"><div class="kind">SQL · Data cleaning</div><h3>Layoffs Dataset Cleaning</h3><p>Removed duplicates, standardized values and handled NULLs and date formats entirely in SQL.</p><div class="tags"><span>MySQL</span><span>Data cleaning</span></div><a class="go" href="#">View on GitHub →</a></div>
-    <div class="card" data-c="excel"><div class="kind">Excel · Dashboard</div><h3>Your Excel Project</h3><p>Replace this with your dataset, the question you answered and the result: pivot tables, charts, slicers and formulas.</p><div class="tags"><span>Excel</span><span>Pivot tables</span><span>Charts</span></div><a class="go" href="#">View file →</a></div>
-    <div class="card" data-c="wp"><div class="kind">WordPress · Client</div><h3>RecycLiCo</h3><p>Client website built with Avada and Fusion Builder, featuring a custom cinematic hero animation.</p><div class="tags"><span>WordPress</span><span>Avada</span><span>Elementor</span></div><a class="go" href="#">Visit site →</a></div>
-    <div class="card" data-c="wp"><div class="kind">WordPress · Client</div><h3>South Fraser Soccer</h3><p>Club website with a custom theme approach, hero carousel, logo grid and subtle animations.</p><div class="tags"><span>WordPress</span><span>Custom theme</span></div><a class="go" href="https://southfrasersoccer.com">Visit site →</a></div>
-    <div class="card" data-c="web"><div class="kind">PHP · Client</div><h3>Bakers Inn</h3><p>Website for a real bakery and café in Sialkot, with all content driven from one configuration file.</p><div class="tags"><span>PHP</span><span>HTML/CSS/JS</span></div><a class="go" href="#">View project →</a></div>
-    <div class="card" data-c="web"><div class="kind">Front-end · E-commerce</div><h3>Bilvora Apparel</h3><p>Complete online clothing store in a single HTML, CSS and JavaScript file with custom SVG product art.</p><div class="tags"><span>JavaScript</span><span>SVG</span></div><a class="go" href="#">View project →</a></div>
-    <div class="card" data-c="cpp"><div class="kind">C++ · Programming</div><h3>Your C++ Project</h3><p>Replace this with your project name and what it does, for example a console application built with C++ and object-oriented design.</p><div class="tags"><span>C++</span><span>OOP</span></div><a class="go" href="#">View on GitHub →</a></div>
-    <div class="card" data-c="web"><div class="kind">Final year project</div><h3>HelpNest</h3><p>Full-stack final year project. Add one line on the problem it solves and your role.</p><div class="tags"><span>PHP</span><span>MySQL</span></div><a class="go" href="#">View project →</a></div>
-  </div>
+  <div class="grid" id="grid"></div>
 </section>
 
 <section id="skills">
@@ -124,15 +123,52 @@ footer{padding:30px 0;text-align:center;font-size:.82rem;color:var(--muted)}
 </div>
 <footer>© 2026 Eman Atiq Khan</footer>
 
+<div class="modal" id="modal"><div class="panel"><button class="x" id="close" aria-label="Close">×</button><div id="detail"></div></div></div>
+
 <script>
+/* ===== EDIT YOUR PROJECTS HERE =====
+   img   = thumbnail shown on the card (put the file in the images folder)
+   shots = extra screenshots shown inside the popup (optional)
+   links = buttons inside the popup. Use "#" to hide a button until you have the real URL. */
+var projects=[
+{cat:"sql",kind:"SQL · Analytics",title:"HR Employee Attrition",short:"Normalized a 4-table schema and answered 20 business questions.",long:"Normalized the HR dataset into a 4-table schema and answered 20 business questions, progressing from JOINs to CTEs, window functions and stored procedures.",tags:["MySQL","CTEs","Window functions"],img:"images/hr-attrition.png",shots:["images/hr-attrition.png"],links:[{label:"View on GitHub",url:"#"}]},
+{cat:"sql",kind:"SQL · Analytics",title:"Walmart Sales Analysis",short:"29 queries from basic to advanced, with a stored procedure and a view.",long:"29 queries across three difficulty levels, including multi-layer CTEs, RANK, LAG, NTILE, a stored procedure and a view.",tags:["MySQL","Stored procedure","Views"],img:"images/walmart.png",shots:["images/walmart.png"],links:[{label:"View on GitHub",url:"#"}]},
+{cat:"sql",kind:"SQL · Analytics",title:"Pizza Sales Analysis",short:"Schema designed from scratch with 25 queries on sales and peak hours.",long:"Designed a 4-table schema from scratch and wrote 25 queries on top sellers, revenue trends and peak hours.",tags:["MySQL","Schema design"],img:"images/pizza-sales.png",shots:["images/pizza-sales.png"],links:[{label:"View on GitHub",url:"#"}]},
+{cat:"sql",kind:"SQL · Analytics",title:"E-Commerce Customer Behavior",short:"17,049 orders analysed with ranking, running totals and LAG.",long:"17,049-row dataset split into customers and orders tables, analysed with ranking, running totals and LAG.",tags:["MySQL","Kaggle"],img:"images/ecommerce.png",shots:["images/ecommerce.png"],links:[{label:"View on GitHub",url:"#"}]},
+{cat:"sql",kind:"SQL · Data cleaning",title:"Layoffs Dataset Cleaning",short:"Duplicates, standardization and NULLs handled entirely in SQL.",long:"Removed duplicates, standardized values and handled NULLs and date formats entirely in SQL.",tags:["MySQL","Data cleaning"],img:"images/layoffs.png",shots:["images/layoffs.png"],links:[{label:"View on GitHub",url:"#"}]},
+{cat:"excel",kind:"Excel · Dashboard",title:"Your Excel Project",short:"Replace with your dataset, question and result.",long:"Describe the dataset, the question you answered and the result: pivot tables, charts, slicers and formulas.",tags:["Excel","Pivot tables","Charts"],img:"images/excel-1.png",shots:["images/excel-1.png"],links:[{label:"Download Excel file",url:"#"}]},
+{cat:"wp",kind:"WordPress · Client",title:"RecycLiCo",short:"Avada and Fusion Builder site with a cinematic hero animation.",long:"Client website built with Avada and Fusion Builder, featuring a custom cinematic hero animation.",tags:["WordPress","Avada","Elementor"],img:"images/recyclico.png",shots:["images/recyclico.png"],links:[{label:"Visit live site",url:"#"}]},
+{cat:"wp",kind:"WordPress · Client",title:"South Fraser Soccer",short:"Club site with hero carousel, logo grid and animations.",long:"Club website with a custom theme approach, hero carousel, logo grid and subtle animations.",tags:["WordPress","Custom theme"],img:"images/south-fraser.png",shots:["images/south-fraser.png"],links:[{label:"Visit live site",url:"https://southfrasersoccer.com"}]},
+{cat:"web",kind:"PHP · Client",title:"Bakers Inn",short:"Bakery and café website for a real Sialkot business.",long:"Website for a real bakery and café in Sialkot, with all content driven from one configuration file.",tags:["PHP","HTML/CSS/JS"],img:"images/bakers-inn.png",shots:["images/bakers-inn.png"],links:[{label:"Visit live site",url:"#"},{label:"View code",url:"#"}]},
+{cat:"web",kind:"Front-end · E-commerce",title:"Bilvora Apparel",short:"Online clothing store in a single HTML file with SVG art.",long:"Complete online clothing store in a single HTML, CSS and JavaScript file with custom SVG product art.",tags:["JavaScript","SVG"],img:"images/bilvora.png",shots:["images/bilvora.png"],links:[{label:"Visit live site",url:"#"},{label:"View code",url:"#"}]},
+{cat:"cpp",kind:"C++ · Programming",title:"Your C++ Project",short:"Replace with your project name and what it does.",long:"Describe your C++ project: what it does, the concepts used and what you learned.",tags:["C++","OOP"],img:"images/cpp.png",shots:["images/cpp.png"],links:[{label:"View on GitHub",url:"#"}]},
+{cat:"web",kind:"Final year project",title:"HelpNest",short:"Full-stack final year project.",long:"Full-stack final year project. Add one line on the problem it solves and your role.",tags:["PHP","MySQL"],img:"images/helpnest.png",shots:["images/helpnest.png"],links:[{label:"View project",url:"#"}]}
+];
+
+var grid=document.getElementById('grid'),modal=document.getElementById('modal'),detail=document.getElementById('detail');
+function imgTag(src,alt){return '<img src="'+src+'" alt="'+alt+'" onerror="this.remove()">';}
+projects.forEach(function(p,i){
+  var c=document.createElement('div');c.className='card';c.dataset.c=p.cat;
+  c.innerHTML='<div class="thumb">'+imgTag(p.img,p.title)+'<span>'+p.title.charAt(0)+'</span></div><div class="body"><div class="kind">'+p.kind+'</div><h3>'+p.title+'</h3><p>'+p.short+'</p><div class="tags">'+p.tags.map(function(t){return '<span>'+t+'</span>'}).join('')+'</div><div class="go">View project →</div></div>';
+  c.addEventListener('click',function(){openP(i)});
+  grid.appendChild(c);
+});
+function openP(i){
+  var p=projects[i];
+  var links=p.links.filter(function(l){return l.url&&l.url!=='#'}).map(function(l,k){return '<a class="btn'+(k?'':' fill')+'" target="_blank" rel="noopener" href="'+l.url+'">'+l.label+' ↗</a>'}).join('');
+  detail.innerHTML='<div class="kind">'+p.kind+'</div><h3>'+p.title+'</h3><p>'+p.long+'</p><div class="tags">'+p.tags.map(function(t){return '<span>'+t+'</span>'}).join('')+'</div><div class="shots">'+p.shots.map(function(s){return imgTag(s,p.title)}).join('')+'</div>'+(links?'<div class="cta">'+links+'</div>':'');
+  modal.classList.add('open');
+}
+function closeP(){modal.classList.remove('open')}
+document.getElementById('close').addEventListener('click',closeP);
+modal.addEventListener('click',function(e){if(e.target===modal)closeP()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeP()});
 document.querySelectorAll('#filters button').forEach(function(b){
   b.addEventListener('click',function(){
     document.querySelectorAll('#filters button').forEach(function(x){x.classList.remove('on')});
     b.classList.add('on');
     var f=b.dataset.f;
-    document.querySelectorAll('#grid .card').forEach(function(c){
-      c.style.display=(f==='all'||c.dataset.c===f)?'':'none';
-    });
+    document.querySelectorAll('#grid .card').forEach(function(c){c.style.display=(f==='all'||c.dataset.c===f)?'':'none'});
   });
 });
 </script>
