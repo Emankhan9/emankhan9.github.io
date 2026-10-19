@@ -73,6 +73,8 @@ footer{padding:30px 0;text-align:center;font-size:.82rem;color:var(--muted)}
 .shots{display:grid;gap:14px;margin:20px 0}
 .shots img{width:100%;border:1px solid var(--line);display:block}
 .panel .cta{margin-top:18px}
+.frame{margin:20px 0;border:1px solid var(--line)}
+.frame iframe{width:100%;height:480px;border:0;display:block}
 </style>
 </head>
 <body>
@@ -118,7 +120,7 @@ footer{padding:30px 0;text-align:center;font-size:.82rem;color:var(--muted)}
 <section class="contact" id="contact">
   <div class="eyebrow">Contact</div><h2>Let’s work together</h2>
   <p class="sub">Open to junior data analyst roles and web projects.</p>
-  <div class="cta"><a class="btn fill" href="mailto:atiqeman2003@gmail.com">atiqeman2003@gmail.com</a><a class="btn" href="#">LinkedIn</a><a class="btn" href="#">GitHub</a></div>
+  <div class="cta"><a class="btn fill" href="mailto:khaneman2003@icloud.com">khaneman2003@icloud.com</a><a class="btn" href="#">LinkedIn</a><a class="btn" href="#">GitHub</a></div>
 </section>
 </div>
 <footer>© 2026 Eman Atiq Khan</footer>
@@ -137,8 +139,8 @@ var projects=[
 {cat:"sql",kind:"SQL · Analytics",title:"E-Commerce Customer Behavior",short:"17,049 orders analysed with ranking, running totals and LAG.",long:"17,049-row dataset split into customers and orders tables, analysed with ranking, running totals and LAG.",tags:["MySQL","Kaggle"],img:"images/ecommerce.png",shots:["images/ecommerce.png"],links:[{label:"View on GitHub",url:"#"}]},
 {cat:"sql",kind:"SQL · Data cleaning",title:"Layoffs Dataset Cleaning",short:"Duplicates, standardization and NULLs handled entirely in SQL.",long:"Removed duplicates, standardized values and handled NULLs and date formats entirely in SQL.",tags:["MySQL","Data cleaning"],img:"images/layoffs.png",shots:["images/layoffs.png"],links:[{label:"View on GitHub",url:"#"}]},
 {cat:"excel",kind:"Excel · Dashboard",title:"Your Excel Project",short:"Replace with your dataset, question and result.",long:"Describe the dataset, the question you answered and the result: pivot tables, charts, slicers and formulas.",tags:["Excel","Pivot tables","Charts"],img:"images/excel-1.png",shots:["images/excel-1.png"],links:[{label:"Download Excel file",url:"#"}]},
-{cat:"wp",kind:"WordPress · Client",title:"RecycLiCo",short:"Avada and Fusion Builder site with a cinematic hero animation.",long:"Client website built with Avada and Fusion Builder, featuring a custom cinematic hero animation.",tags:["WordPress","Avada","Elementor"],img:"images/recyclico.png",shots:["images/recyclico.png"],links:[{label:"Visit live site",url:"#"}]},
-{cat:"wp",kind:"WordPress · Client",title:"South Fraser Soccer",short:"Club site with hero carousel, logo grid and animations.",long:"Club website with a custom theme approach, hero carousel, logo grid and subtle animations.",tags:["WordPress","Custom theme"],img:"images/south-fraser.png",shots:["images/south-fraser.png"],links:[{label:"Visit live site",url:"https://southfrasersoccer.com"}]},
+{cat:"wp",kind:"WordPress · Client",title:"RecycLiCo",short:"Avada and Fusion Builder site with a cinematic hero animation.",long:"Client website built with Avada and Fusion Builder, featuring a custom cinematic hero animation.",tags:["WordPress","Avada","Elementor"],img:"https://s.wordpress.com/mshots/v1/https%3A%2F%2Frecyclico.com?w=800&h=500",live:"https://recyclico.com/",shots:[],links:[{label:"Visit live site",url:"https://recyclico.com/"}]},
+{cat:"wp",kind:"WordPress · Client",title:"South Fraser Soccer",short:"Club site with hero carousel, logo grid and animations.",long:"Club website with a custom theme approach, hero carousel, logo grid and subtle animations.",tags:["WordPress","Custom theme"],img:"https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsouthfrasersoccer.com?w=800&h=500",live:"https://southfrasersoccer.com",shots:[],links:[{label:"Visit live site",url:"https://southfrasersoccer.com"}]},
 {cat:"web",kind:"PHP · Client",title:"Bakers Inn",short:"Bakery and café website for a real Sialkot business.",long:"Website for a real bakery and café in Sialkot, with all content driven from one configuration file.",tags:["PHP","HTML/CSS/JS"],img:"images/bakers-inn.png",shots:["images/bakers-inn.png"],links:[{label:"Visit live site",url:"#"},{label:"View code",url:"#"}]},
 {cat:"web",kind:"Front-end · E-commerce",title:"Bilvora Apparel",short:"Online clothing store in a single HTML file with SVG art.",long:"Complete online clothing store in a single HTML, CSS and JavaScript file with custom SVG product art.",tags:["JavaScript","SVG"],img:"images/bilvora.png",shots:["images/bilvora.png"],links:[{label:"Visit live site",url:"#"},{label:"View code",url:"#"}]},
 {cat:"cpp",kind:"C++ · Programming",title:"Your C++ Project",short:"Replace with your project name and what it does.",long:"Describe your C++ project: what it does, the concepts used and what you learned.",tags:["C++","OOP"],img:"images/cpp.png",shots:["images/cpp.png"],links:[{label:"View on GitHub",url:"#"}]},
@@ -156,7 +158,7 @@ projects.forEach(function(p,i){
 function openP(i){
   var p=projects[i];
   var links=p.links.filter(function(l){return l.url&&l.url!=='#'}).map(function(l,k){return '<a class="btn'+(k?'':' fill')+'" target="_blank" rel="noopener" href="'+l.url+'">'+l.label+' ↗</a>'}).join('');
-  detail.innerHTML='<div class="kind">'+p.kind+'</div><h3>'+p.title+'</h3><p>'+p.long+'</p><div class="tags">'+p.tags.map(function(t){return '<span>'+t+'</span>'}).join('')+'</div><div class="shots">'+p.shots.map(function(s){return imgTag(s,p.title)}).join('')+'</div>'+(links?'<div class="cta">'+links+'</div>':'');
+  detail.innerHTML='<div class="kind">'+p.kind+'</div><h3>'+p.title+'</h3><p>'+p.long+'</p><div class="tags">'+p.tags.map(function(t){return '<span>'+t+'</span>'}).join('')+'</div>'+(p.live&&p.live!=='#'?'<div class="frame"><iframe src="'+p.live+'" loading="lazy" title="Live preview"></iframe></div>':'')+'<div class="shots">'+p.shots.map(function(s){return imgTag(s,p.title)}).join('')+'</div>'+(links?'<div class="cta">'+links+'</div>':'');
   modal.classList.add('open');
 }
 function closeP(){modal.classList.remove('open')}
