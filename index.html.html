@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eman Atiq Khan – Data Analyst &amp; Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f5f1;--surface:#fff;--ink:#14213d;--muted:#5f6b7a;--gold:#b08d57;--line:#e4dfd6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1320;--surface:#161d2e;--ink:#eef0f5;--muted:#a3adbd;--gold:#d2b17a;--line:#26304a}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
+.logo{font-family:'Playfair Display',Georgia,serif;font-size:1.25rem;font-weight:600}
+.logo b{color:var(--gold)}
+nav{display:flex;gap:26px;font-size:.9rem;color:var(--muted)}
+nav a:hover{color:var(--gold)}
+@media(max-width:560px){nav{gap:14px;font-size:.82rem}}
+.hero{padding:96px 0 80px;border-bottom:1px solid var(--line)}
+.eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:.75rem;color:var(--gold);font-weight:600}
+h1{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:clamp(2.4rem,6.5vw,4.4rem);line-height:1.08;margin:14px 0 20px}
+h1 em{font-style:italic;color:var(--gold)}
+.lead{max-width:600px;color:var(--muted);font-size:1.1rem}
+.cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:12px 26px;border:1px solid var(--ink);font-size:.9rem;font-weight:500;letter-spacing:.03em;transition:.2s}
+.btn.fill{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+.stats{display:flex;gap:48px;margin-top:54px;flex-wrap:wrap}
+.stats div{font-size:.85rem;color:var(--muted)}
+.stats b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:2rem;color:var(--ink);font-weight:500}
+section{padding:84px 0;border-bottom:1px solid var(--line)}
+h2{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:2.1rem;margin:6px 0 8px}
+.sub{color:var(--muted);max-width:560px;margin:0 0 38px}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:30px;border-bottom:1px solid var(--line)}
+.filters button{background:none;border:0;border-bottom:2px solid transparent;padding:10px 16px;font:inherit;font-size:.9rem;color:var(--muted);cursor:pointer;margin-bottom:-1px}
+.filters button.on{color:var(--ink);border-color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
+.card{background:var(--surface);border:1px solid var(--line);padding:28px;display:flex;flex-direction:column;gap:10px;transition:.25s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.kind{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.card h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:1.3rem;margin:0}
+.card p{margin:0;color:var(--muted);font-size:.93rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tags span{font-size:.72rem;padding:3px 10px;border:1px solid var(--line);color:var(--muted)}
+.card .go{margin-top:auto;padding-top:10px;font-size:.88rem;font-weight:500;color:var(--gold)}
+.sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.sk div{background:var(--surface);border:1px solid var(--line);padding:26px}
+.sk h4{margin:0 0 14px;font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:1.15rem}
+.sk ul{list-style:none;margin:0;padding:0;color:var(--muted);font-size:.92rem}
+.sk li{padding:5px 0;border-bottom:1px dashed var(--line)}
+.sk li:last-child{border:0}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:760px){.about{grid-template-columns:1fr;gap:20px}}
+.about p{color:var(--muted);margin:0 0 14px}
+.contact{text-align:center}
+.contact .sub{margin:0 auto 28px}
+.contact .cta{justify-content:center}
+footer{padding:30px 0;text-align:center;font-size:.82rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#top">Eman<b>.</b></a>
+<nav><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav></div></header>
+
+<div class="wrap" id="top">
+<div class="hero">
+  <div class="eyebrow">Data Analyst &amp; Web Developer</div>
+  <h1>I turn data into <em>decisions</em> and ideas into websites.</h1>
+  <p class="lead">Computer Science graduate with hands-on experience in SQL analytics, Excel and client WordPress and PHP websites. I like work that is clear, accurate and useful to the people who rely on it.</p>
+  <div class="cta"><a class="btn fill" href="#projects">View projects</a><a class="btn" href="#contact">Contact me</a></div>
+  <div class="stats"><div><b>5+</b>SQL projects</div><div><b>2</b>WordPress client sites</div><div><b>BSCS</b>Computer Science</div></div>
+</div>
+
+<section id="about">
+  <div class="eyebrow">About</div><h2>A little about me</h2>
+  <div class="about">
+    <div><p>I hold a bachelor’s degree in Computer Science. My path started with web development and grew into data analytics, where I enjoy finding the story inside a dataset.</p></div>
+    <div><p>I write advanced SQL (CTEs, window functions, stored procedures, views), build dashboards in Excel, and deliver polished WordPress and PHP sites for real businesses. I am currently seeking junior data analyst roles, including remote positions.</p></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="eyebrow">Selected work</div><h2>Projects</h2>
+  <p class="sub">Data analysis and web development, side by side.</p>
+  <div class="filters" id="filters"><button class="on" data-f="all">All</button><button data-f="sql">SQL</button><button data-f="excel">Excel</button><button data-f="wp">WordPress</button><button data-f="web">Web Development</button><button data-f="cpp">C++</button></div>
+  <div class="grid" id="grid">
+    <div class="card" data-c="sql"><div class="kind">SQL · Analytics</div><h3>HR Employee Attrition</h3><p>Normalized a 4-table schema and answered 20 business questions, progressing from JOINs to CTEs, window functions and stored procedures.</p><div class="tags"><span>MySQL</span><span>CTEs</span><span>Window functions</span></div><a class="go" href="#">View on GitHub →</a></div>
+    <div class="card" data-c="sql"><div class="kind">SQL · Analytics</div><h3>Walmart Sales Analysis</h3><p>29 queries across three difficulty levels, including multi-layer CTEs, RANK, LAG, NTILE, a stored procedure and a view.</p><div class="tags"><span>MySQL</span><span>Stored procedure</span><span>Views</span></div><a class="go" href="#">View on GitHub →</a></div>
+    <div class="card" data-c="sql"><div class="kind">SQL · Analytics</div><h3>Pizza Sales Analysis</h3><p>Designed a 4-table schema from scratch and wrote 25 queries on top sellers, revenue trends and peak hours.</p><div class="tags"><span>MySQL</span><span>Schema design</span></div><a class="go" href="#">View on GitHub →</a></div>
+    <div class="card" data-c="sql"><div class="kind">SQL · Analytics</div><h3>E-Commerce Customer Behavior</h3><p>17,049-row dataset split into customers and orders tables, analysed with ranking, running totals and LAG.</p><div class="tags"><span>MySQL</span><span>Kaggle</span></div><a class="go" href="#">View on GitHub →</a></div>
+    <div class="card" data-c="sql"><div class="kind">SQL · Data cleaning</div><h3>Layoffs Dataset Cleaning</h3><p>Removed duplicates, standardized values and handled NULLs and date formats entirely in SQL.</p><div class="tags"><span>MySQL</span><span>Data cleaning</span></div><a class="go" href="#">View on GitHub →</a></div>
+    <div class="card" data-c="excel"><div class="kind">Excel · Dashboard</div><h3>Your Excel Project</h3><p>Replace this with your dataset, the question you answered and the result: pivot tables, charts, slicers and formulas.</p><div class="tags"><span>Excel</span><span>Pivot tables</span><span>Charts</span></div><a class="go" href="#">View file →</a></div>
+    <div class="card" data-c="wp"><div class="kind">WordPress · Client</div><h3>RecycLiCo</h3><p>Client website built with Avada and Fusion Builder, featuring a custom cinematic hero animation.</p><div class="tags"><span>WordPress</span><span>Avada</span><span>Elementor</span></div><a class="go" href="#">Visit site →</a></div>
+    <div class="card" data-c="wp"><div class="kind">WordPress · Client</div><h3>South Fraser Soccer</h3><p>Club website with a custom theme approach, hero carousel, logo grid and subtle animations.</p><div class="tags"><span>WordPress</span><span>Custom theme</span></div><a class="go" href="https://southfrasersoccer.com">Visit site →</a></div>
+    <div class="card" data-c="web"><div class="kind">PHP · Client</div><h3>Bakers Inn</h3><p>Website for a real bakery and café in Sialkot, with all content driven from one configuration file.</p><div class="tags"><span>PHP</span><span>HTML/CSS/JS</span></div><a class="go" href="#">View project →</a></div>
+    <div class="card" data-c="web"><div class="kind">Front-end · E-commerce</div><h3>Bilvora Apparel</h3><p>Complete online clothing store in a single HTML, CSS and JavaScript file with custom SVG product art.</p><div class="tags"><span>JavaScript</span><span>SVG</span></div><a class="go" href="#">View project →</a></div>
+    <div class="card" data-c="cpp"><div class="kind">C++ · Programming</div><h3>Your C++ Project</h3><p>Replace this with your project name and what it does, for example a console application built with C++ and object-oriented design.</p><div class="tags"><span>C++</span><span>OOP</span></div><a class="go" href="#">View on GitHub →</a></div>
+    <div class="card" data-c="web"><div class="kind">Final year project</div><h3>HelpNest</h3><p>Full-stack final year project. Add one line on the problem it solves and your role.</p><div class="tags"><span>PHP</span><span>MySQL</span></div><a class="go" href="#">View project →</a></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="eyebrow">Expertise</div><h2>Skills</h2>
+  <p class="sub">The tools and techniques I work with.</p>
+  <div class="sk">
+    <div><h4>SQL &amp; Databases</h4><ul><li>MySQL / MariaDB, MySQL Workbench</li><li>Joins, UNION, subqueries</li><li>CTEs and window functions</li><li>Stored procedures and views</li><li>Schema design and normalization</li><li>Data cleaning</li></ul></div>
+    <div><h4>Data Analysis</h4><ul><li>Excel: formulas, pivot tables, charts</li><li>Dashboards and reporting</li><li>Exploratory data analysis</li><li>Business question framing</li><li>Findings and documentation</li></ul></div>
+    <div><h4>WordPress</h4><ul><li>Avada and Fusion Builder</li><li>Elementor (Flexbox containers)</li><li>Custom theme strategy</li><li>Page layouts and title bars</li><li>Animations and carousels</li></ul></div>
+    <div><h4>Web Development</h4><ul><li>PHP and MySQL</li><li>HTML, CSS, JavaScript</li><li>Responsive design</li><li>SVG illustration</li><li>Full-stack project delivery</li></ul></div>
+    <div><h4>Programming &amp; Tools</h4><ul><li>C++ programming and projects</li><li>Object-oriented programming</li><li>Git and GitHub</li><li>README and project documentation</li><li>Kaggle datasets</li></ul></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="eyebrow">Contact</div><h2>Let’s work together</h2>
+  <p class="sub">Open to junior data analyst roles and web projects.</p>
+  <div class="cta"><a class="btn fill" href="mailto:atiqeman2003@gmail.com">atiqeman2003@gmail.com</a><a class="btn" href="#">LinkedIn</a><a class="btn" href="#">GitHub</a></div>
+</section>
+</div>
+<footer>© 2026 Eman Atiq Khan</footer>
+
+<script>
+document.querySelectorAll('#filters button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#filters button').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');
+    var f=b.dataset.f;
+    document.querySelectorAll('#grid .card').forEach(function(c){
+      c.style.display=(f==='all'||c.dataset.c===f)?'':'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
