@@ -75,6 +75,14 @@ footer{padding:30px 0;text-align:center;font-size:.82rem;color:var(--muted)}
 .panel .cta{margin-top:18px}
 .frame{margin:20px 0;border:1px solid var(--line)}
 .frame iframe{width:100%;height:480px;border:0;display:block}
+.hero>*{opacity:0;animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+.hero>*:nth-child(2){animation-delay:.12s}.hero>*:nth-child(3){animation-delay:.24s}.hero>*:nth-child(4){animation-delay:.36s}.hero>*:nth-child(5){animation-delay:.48s}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.caret{display:inline-block;width:2px;height:1em;background:var(--gold);margin-left:4px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.hero>*{opacity:1;animation:none}.caret{animation:none}.rv{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -83,7 +91,7 @@ footer{padding:30px 0;text-align:center;font-size:.82rem;color:var(--muted)}
 
 <div class="wrap" id="top">
 <div class="hero">
-  <div class="eyebrow">Data Analyst &amp; Web Developer</div>
+  <div class="eyebrow"><span id="typed">Data Analyst</span><span class="caret"></span></div>
   <h1>I turn data into <em>decisions</em> and ideas into websites.</h1>
   <p class="lead">Computer Science graduate with hands-on experience in SQL analytics, Excel and client WordPress and PHP websites. I like work that is clear, accurate and useful to the people who rely on it.</p>
   <div class="cta"><a class="btn fill" href="#projects">View projects</a><a class="btn" href="#contact">Contact me</a></div>
@@ -144,13 +152,13 @@ var projects=[
 {cat:"web",kind:"PHP · Client",title:"Bakers Inn",short:"Bakery and café website for a real Sialkot business.",long:"Website for a real bakery and café in Sialkot, with all content driven from one configuration file.",tags:["PHP","HTML/CSS/JS"],img:"images/bakers-inn.png",shots:["images/bakers-inn.png"],links:[{label:"Visit live site",url:"#"},{label:"View code",url:"#"}]},
 {cat:"web",kind:"Front-end · E-commerce",title:"Bilvora Apparel",short:"Online clothing store in a single HTML file with SVG art.",long:"Complete online clothing store in a single HTML, CSS and JavaScript file with custom SVG product art.",tags:["JavaScript","SVG"],img:"images/bilvora.png",shots:["images/bilvora.png"],links:[{label:"Visit live site",url:"#"},{label:"View code",url:"#"}]},
 {cat:"cpp",kind:"C++ · Programming",title:"Your C++ Project",short:"Replace with your project name and what it does.",long:"Describe your C++ project: what it does, the concepts used and what you learned.",tags:["C++","OOP"],img:"images/cpp.png",shots:["images/cpp.png"],links:[{label:"View on GitHub",url:"#"}]},
-{cat:"web",kind:"Final year project",title:"HelpNest",short:"Full-stack final year project.",long:"Full-stack final year project. Add one line on the problem it solves and your role.",tags:["PHP","MySQL"],img:"images/helpnest.png",shots:["images/helpnest.png"],links:[{label:"View project",url:"#"}]}
+{cat:"web",kind:"Final year project",title:"HelpNest",short:"Full-stack final year project.",long:"Full-stack final year project built with PHP and MySQL. Browse the static front-end preview, or read the full source code on GitHub.",tags:["PHP","MySQL"],img:"images/helpnest.png",shots:["images/helpnest.png"],links:[{label:"View static preview",url:"https://emankhan9.github.io/website-projects/helpnest/"},{label:"View code",url:"https://github.com/Emankhan9/website-projects/tree/main/helpnest"}]}
 ];
 
 var grid=document.getElementById('grid'),modal=document.getElementById('modal'),detail=document.getElementById('detail');
 function imgTag(src,alt){return '<img src="'+src+'" alt="'+alt+'" onerror="this.remove()">';}
 projects.forEach(function(p,i){
-  var c=document.createElement('div');c.className='card';c.dataset.c=p.cat;
+  var c=document.createElement('div');c.className='card rv';c.style.transitionDelay=(i%3)*90+'ms';c.dataset.c=p.cat;
   c.innerHTML='<div class="thumb">'+imgTag(p.img,p.title)+'<span>'+p.title.charAt(0)+'</span></div><div class="body"><div class="kind">'+p.kind+'</div><h3>'+p.title+'</h3><p>'+p.short+'</p><div class="tags">'+p.tags.map(function(t){return '<span>'+t+'</span>'}).join('')+'</div><div class="go">View project →</div></div>';
   c.addEventListener('click',function(){openP(i)});
   grid.appendChild(c);
@@ -165,6 +173,23 @@ function closeP(){modal.classList.remove('open')}
 document.getElementById('close').addEventListener('click',closeP);
 modal.addEventListener('click',function(e){if(e.target===modal)closeP()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeP()});
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var tEl=document.getElementById('typed');
+if(!reduce){
+  var roles=["Data Analyst","SQL Analyst","Excel Reporting","WordPress Developer","PHP Developer"],ri=0,ci=0,del=false;
+  (function typeLoop(){var w=roles[ri];tEl.textContent=w.slice(0,ci);
+    if(!del&&ci<w.length){ci++;setTimeout(typeLoop,90)}
+    else if(!del){del=true;setTimeout(typeLoop,1400)}
+    else if(ci>0){ci--;setTimeout(typeLoop,45)}
+    else{del=false;ri=(ri+1)%roles.length;setTimeout(typeLoop,300)}})();
+}else{tEl.textContent='Data Analyst & Web Developer';}
+document.querySelectorAll('section .eyebrow,section h2,section .sub,.filters,.sk>div,.about>div,.contact .cta').forEach(function(el){el.classList.add('rv')});
+document.querySelectorAll('.sk>div').forEach(function(el,k){el.style.transitionDelay=(k%3)*90+'ms'});
+if(reduce){document.querySelectorAll('.rv').forEach(function(el){el.classList.remove('rv')})}
+else{
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.classList.add('in');io.unobserve(t);setTimeout(function(){t.classList.remove('rv','in');t.style.transitionDelay=''},1000)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+}
 document.querySelectorAll('#filters button').forEach(function(b){
   b.addEventListener('click',function(){
     document.querySelectorAll('#filters button').forEach(function(x){x.classList.remove('on')});
